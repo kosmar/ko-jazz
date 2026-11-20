@@ -310,7 +310,7 @@ def publish_to_github() -> None:
                 shutil.copytree(item, dest)
             else:
                 shutil.copy2(item, dest)
-        subprocess.run(["git", "add", "-A"], cwd=checkout, check=True)
+        subprocess.run(["git", "add", "-A", "--force"], cwd=checkout, check=True)
         subprocess.run(
             ["git", "commit", "-m", "chore(pages): update static site"],
             cwd=checkout,

@@ -183,7 +183,7 @@ def push_snapshot(meta: dict, snap: Path, tag: str | None, release: bool) -> Non
                 shutil.copytree(item, dest, symlinks=True)
             else:
                 shutil.copy2(item, dest)
-        run(["git", "add", "-A"], cwd=work)
+        run(["git", "add", "-A", "--force"], cwd=work)
         msg = f"chore: publish {meta['display_name']} snapshot ({git_head()[:12]})"
         status = run(["git", "status", "--porcelain"], cwd=work)
         if not status.stdout.strip():
